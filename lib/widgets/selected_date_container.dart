@@ -21,41 +21,38 @@ class SelectedDateContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final calendarController = Get.put(CalendarDateController());
-    return Positioned(
-      bottom: -48.h,
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-        height: 32.h,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: blueSecondary,
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            SvgPicture.asset(
-              selectedCalIcon,
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+      height: 32.h,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        color: blueSecondary,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SvgPicture.asset(
+            selectedCalIcon,
+            color: bluePrimary,
+            height: 14.h,
+          ),
+          SizedBox(width: 8.w),
+          Text(
+            selectedDate,
+            style: robotobluePri14w4,
+          ),
+          SizedBox(width: 8.w),
+          GestureDetector(
+            onTap: () {
+              calendarController.removeSelectedDate(preset);
+            },
+            child: SvgPicture.asset(
+              removeIcon,
               color: bluePrimary,
-              height: 14.h,
+              height: 10.h,
             ),
-            SizedBox(width: 8.w),
-            Text(
-              selectedDate,
-              style: robotobluePri14w4,
-            ),
-            SizedBox(width: 8.w),
-            GestureDetector(
-              onTap: () {
-                calendarController.removeSelectedDate(preset);
-              },
-              child: SvgPicture.asset(
-                removeIcon,
-                color: bluePrimary,
-                height: 10.h,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
